@@ -19,12 +19,27 @@ namespace RestWithASPNET10.Controllers
 
         private decimal ConvertToDecimal(string number)
         {
-            throw new NotImplementedException();
+            decimal decimalValue;
+            if (decimal.TryParse(
+                number,
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.NumberFormatInfo.InvariantInfo,
+                out decimalValue))
+            {
+                return decimalValue;
+            }
+            return 0;
         }
 
-        private bool IsNumeric(string firstNumber)
+        private bool IsNumeric(string strNumber)
         {
-            throw new NotImplementedException();
+            decimal decimalValue;
+            bool isNumber = decimal.TryParse(
+                strNumber,
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.NumberFormatInfo.InvariantInfo,
+                out decimalValue);
+            return isNumber;
         }
     }
 }
