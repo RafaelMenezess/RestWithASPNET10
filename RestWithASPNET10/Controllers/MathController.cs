@@ -52,5 +52,16 @@ namespace RestWithASPNET10.Controllers
             }
             return BadRequest("Invalid input");
         }
+
+        [HttpGet("multiplication/{firstNumber}/{secondNumber}")]
+        public IActionResult Multiplication(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var sum = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(sum.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
     }
 }
