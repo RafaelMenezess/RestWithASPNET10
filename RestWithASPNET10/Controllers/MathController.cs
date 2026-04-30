@@ -47,8 +47,8 @@ namespace RestWithASPNET10.Controllers
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                var sum = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
-                return Ok(sum.ToString());
+                var subtraction = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+                return Ok(subtraction.ToString());
             }
             return BadRequest("Invalid input");
         }
@@ -58,8 +58,8 @@ namespace RestWithASPNET10.Controllers
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                var sum = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
-                return Ok(sum.ToString());
+                var mult = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(mult.ToString());
             }
             return BadRequest("Invalid input");
         }
@@ -69,8 +69,8 @@ namespace RestWithASPNET10.Controllers
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                var sum = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
-                return Ok(sum.ToString());
+                var division = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(division.ToString());
             }
             return BadRequest("Invalid input");
         }
@@ -83,6 +83,17 @@ namespace RestWithASPNET10.Controllers
                 var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
                 var mean = sum / 2;
                 return Ok(mean.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
+
+        [HttpGet("square-root/{number}")]
+        public IActionResult SquareRoot(string number)
+        {
+            if (IsNumeric(number))
+            {
+                var sqrt = Math.Sqrt((double)ConvertToDecimal(number));
+                return Ok(sqrt.ToString());
             }
             return BadRequest("Invalid input");
         }
