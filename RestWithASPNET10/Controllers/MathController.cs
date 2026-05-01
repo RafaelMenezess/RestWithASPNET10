@@ -17,30 +17,7 @@ namespace RestWithASPNET10.Controllers
             return BadRequest("Invalid input");
         }
 
-        private decimal ConvertToDecimal(string number)
-        {
-            decimal decimalValue;
-            if (decimal.TryParse(
-                number,
-                System.Globalization.NumberStyles.Any,
-                System.Globalization.NumberFormatInfo.InvariantInfo,
-                out decimalValue))
-            {
-                return decimalValue;
-            }
-            return 0;
-        }
 
-        private bool IsNumeric(string strNumber)
-        {
-            decimal decimalValue;
-            bool isNumber = decimal.TryParse(
-                strNumber,
-                System.Globalization.NumberStyles.Any,
-                System.Globalization.NumberFormatInfo.InvariantInfo,
-                out decimalValue);
-            return isNumber;
-        }
 
         [HttpGet("subtraction/{firstNumber}/{secondNumber}")]
         public IActionResult Subtraction(string firstNumber, string secondNumber)
