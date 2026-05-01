@@ -2,7 +2,7 @@
 {
     public class NumberHelper
     {
-        public decimal ConvertToDecimal(string number)
+        public static decimal ConvertToDecimal(string number)
         {
             decimal decimalValue;
             if (decimal.TryParse(
@@ -16,7 +16,7 @@
             return 0;
         }
 
-        public bool IsNumeric(string strNumber)
+        public static bool IsNumeric(string strNumber)
         {
             decimal decimalValue;
             bool isNumber = decimal.TryParse(
