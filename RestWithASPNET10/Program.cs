@@ -1,4 +1,5 @@
 using RestWithASPNET10.Services;
+using RestWithASPNET10.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddSingleton<MathService>();
+builder.Services.AddScoped<IPersonServices, PersonServices>();
 
 var app = builder.Build();
 

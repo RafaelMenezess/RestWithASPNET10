@@ -39,9 +39,9 @@ namespace RestWithASPNET10.Services.Implementations
             return new Person
             {
                 Id = new Random().Next(1, 1000),
-                FirstName = "John" + i,
-                LastName = "Doe" + i,
-                Address = "123 Main Street" + i,
+                FirstName = "John " + i,
+                LastName = "Doe " + i,
+                Address = "123 Main Street " + i,
                 Gender = "Male"
             };
         }
