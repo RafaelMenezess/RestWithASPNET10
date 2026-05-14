@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<MathService>();
 builder.Services.AddScoped<IPersonServices, PersonServices>();
 
 var app = builder.Build();
