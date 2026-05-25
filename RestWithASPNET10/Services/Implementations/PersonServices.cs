@@ -1,49 +1,50 @@
 ﻿using RestWithASPNET10.Model;
+using RestWithASPNET10.Model.Context;
 
 namespace RestWithASPNET10.Services.Implementations
 {
     public class PersonServices : IPersonServices
     {
-        public Person FindById(long id)
+        private MSSQLContext _context;
+        public PersonServices(MSSQLContext context)
         {
-            var person = MockPerson((int)id);
-            return person;
+            _context = context;
         }
-
         public List<Person> FindAll()
         {
-            List<Person> persons =  new List<Person>();
-            for (int i = 0; i < 8; i++)
-            {
-                persons.Add(MockPerson(i));
-            }
-            return persons;
+            return _context.Persons.ToList();
         }
-
+        public Person FindById(long id)
+        {
+            return _context.Persons.Find(id);
+        }
         public Person Create(Person person)
         {
-            person.Id = new Random().Next(1, 1000);
+            _context.Persons.Add(person);
+            _context.SaveChanges();
             return person;
         }
         public Person Update(Person person)
         {
+            var personBD = _context.Persons.Find(person.Id);
+            if (personBD == null)
+            {
+                return null;
+            }
+            _context.Entry(personBD).CurrentValues.SetValues(person);
+            _context.SaveChanges();
             return person;
         }
 
         public void Delete(long id)
         {
-            //Simulate delete
-        }
-        private Person MockPerson(int i)
-        {
-            return new Person
+            var person = _context.Persons.Find(id);
+            if (person == null)
             {
-                Id = new Random().Next(1, 1000),
-                FirstName = "John " + i,
-                LastName = "Doe " + i,
-                Address = "123 Main Street " + i,
-                Gender = "Male"
-            };
+                return;
+            }
+            _context.Persons.Remove(person);
+            _context.SaveChanges();
         }
     }
 }
