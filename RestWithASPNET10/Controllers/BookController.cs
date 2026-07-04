@@ -38,7 +38,7 @@ namespace RestWithASPNET10.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Book book)
+        public IActionResult Post([FromBody] T book)
         {
             _logger.LogInformation("Creating new book");
             var createdBook = _bookService.Create(book);
@@ -51,7 +51,7 @@ namespace RestWithASPNET10.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Book book)
+        public IActionResult Put([FromBody] T book)
         {
             _logger.LogInformation("Updating book with id: {id}", book.Id);
             var updatedBook = _bookService.Update(book);

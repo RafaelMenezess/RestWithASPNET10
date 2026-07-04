@@ -4,10 +4,10 @@ namespace RestWithASPNET10.Repositories
 {
     public interface IBookRepository
     {
-        Book Create(Book book);
-        Book FindById(long id);
-        List<Book> FindAll();
-        Book Update(Book book);
+        T Create(T book);
+        T FindById(long id);
+        List<T> FindAll();
+        T Update(T book);
         void Delete(long id);
     }
 }

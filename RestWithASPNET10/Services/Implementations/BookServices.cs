@@ -11,19 +11,19 @@ namespace RestWithASPNET10.Services.Implementations
         {
             _repository = new BookRepository(context);
         }
-        public List<Book> FindAll()
+        public List<T> FindAll()
         {
             return _repository.FindAll();
         }
-        public Book FindById(long id)
+        public T FindById(long id)
         {
             return _repository.FindById(id);
         }
-        public Book Create(Book book)
+        public T Create(T book)
         {
             return _repository.Create(book);
         }
-        public Book Update(Book book)
+        public T Update(T book)
         {
             return _repository.Update(book);
         }

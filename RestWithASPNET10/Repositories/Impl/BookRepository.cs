@@ -10,21 +10,21 @@ namespace RestWithASPNET10.Repositories.Impl
         {
             _context = context;
         }
-        public List<Book> FindAll()
+        public List<T> FindAll()
         {
             return _context.Books.ToList();
         }
-        public Book FindById(long id)
+        public T FindById(long id)
         {
             return _context.Books.Find(id);
         }
-        public Book Create(Book book)
+        public T Create(T book)
         {
             _context.Books.Add(book);
             _context.SaveChanges();
             return book;
         }
-        public Book Update(Book book)
+        public T Update(T book)
         {
             var bookBD = _context.Books.Find(book.Id);
             if (bookBD == null)
