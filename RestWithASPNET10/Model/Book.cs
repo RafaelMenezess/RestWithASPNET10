@@ -6,7 +6,7 @@ namespace RestWithASPNET10.Model
 {
     [Table("books")]
 
-    public class T : BaseEntity
+    public class Book : BaseEntity
     {
         [Required]
         [Column("title", TypeName = "varchar(200)")]
