@@ -1,15 +1,16 @@
 ﻿using RestWithASPNET10.Model;
 using RestWithASPNET10.Model.Context;
+using RestWithASPNET10.Repositories;
 using RestWithASPNET10.Repositories.Impl;
 
 namespace RestWithASPNET10.Services.Implementations
 {
     public class PersonServices : IPersonServices
     {
-        private PersonRepository _repository;
-        public PersonServices(MSSQLContext context)
+        private IRepository<Person> _repository;
+        public PersonServices(IRepository<Person> repository)
         {
-            _repository = new PersonRepository(context);
+            _repository = repository;
         }
         public List<Person> FindAll()
         {
