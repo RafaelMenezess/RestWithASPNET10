@@ -17,7 +17,8 @@ namespace RestWithASPNET10.Data.Converter.Impl
                 Id = origin.Id,
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
-                Address = origin.Address
+                Address = origin.Address,
+                Gender = origin.Gender,
             };
         }
 
@@ -41,7 +42,8 @@ namespace RestWithASPNET10.Data.Converter.Impl
                 Id = origin.Id,
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
-                Address = origin.Address
+                Address = origin.Address,
+                Gender = origin.Gender
             };
         }
 

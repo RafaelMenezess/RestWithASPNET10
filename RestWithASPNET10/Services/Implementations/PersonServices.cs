@@ -1,32 +1,36 @@
-﻿using RestWithASPNET10.Model;
-using RestWithASPNET10.Model.Context;
+﻿using RestWithASPNET10.Data.Converter.Impl;
+using RestWithASPNET10.Data.DTO;
+using RestWithASPNET10.Model;
 using RestWithASPNET10.Repositories;
-using RestWithASPNET10.Repositories.Impl;
 
 namespace RestWithASPNET10.Services.Implementations
 {
     public class PersonServices : IPersonServices
     {
         private IRepository<Person> _repository;
+        private readonly PersonConverter _converter;
         public PersonServices(IRepository<Person> repository)
         {
             _repository = repository;
+            _converter = new PersonConverter();
         }
-        public List<Person> FindAll()
+        public List<PersonDTO> FindAll()
         {
-            return _repository.FindAll();
+            return _repository.FindAll().Select(item => _converter.Parse(item)).ToList();
         }
-        public Person FindById(long id)
+        public PersonDTO FindById(long id)
         {
-            return _repository.FindById(id);
+            return _converter.Parse(_repository.FindById(id));
         }
-        public Person Create(Person person)
+        public PersonDTO Create(PersonDTO person)
         {
-            return _repository.Create(person);
+            var personModel = _converter.Parse(person);
+            return _converter.Parse(_repository.Create(personModel));
         }
-        public Person Update(Person person)
+        public PersonDTO Update(PersonDTO person)
         {
-            return _repository.Update(person);
+            var personModel = _converter.Parse(person);
+            return _converter.Parse(_repository.Update(personModel));
         }
         public void Delete(long id)
         {
