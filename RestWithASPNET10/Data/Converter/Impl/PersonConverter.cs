@@ -1,5 +1,5 @@
 ﻿using RestWithASPNET10.Data.Converter.Contract;
-using RestWithASPNET10.Data.DTO.V1;
+using RestWithASPNET10.Data.DTO.V2;
 using RestWithASPNET10.Model;
 
 namespace RestWithASPNET10.Data.Converter.Impl
@@ -19,6 +19,7 @@ namespace RestWithASPNET10.Data.Converter.Impl
                 LastName = origin.LastName,
                 Address = origin.Address,
                 Gender = origin.Gender,
+                //BirthDay = origin.BirthDay
             };
         }
 
@@ -43,7 +44,9 @@ namespace RestWithASPNET10.Data.Converter.Impl
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
                 Address = origin.Address,
-                Gender = origin.Gender
+                Gender = origin.Gender,
+                BirthDay = DateTime.Now,
+                //BirthDay = origin.BirthDay ??  DateTime.Now,
             };
         }
 
