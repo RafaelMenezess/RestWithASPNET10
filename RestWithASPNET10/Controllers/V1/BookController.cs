@@ -2,7 +2,7 @@
 using RestWithASPNET10.Data.DTO;
 using RestWithASPNET10.Services;
 
-namespace RestWithASPNET10.Controllers
+namespace RestWithASPNET10.Controllers.V1
 {
     [ApiController]
     [Route("api/[controller]/v1")]
@@ -47,6 +47,9 @@ namespace RestWithASPNET10.Controllers
                 _logger.LogError("Failed to create book");
                 return NotFound();
             }
+            Response.Headers.Add("X-API-Deprecated", "true");
+            Response.Headers.Add("X-API-Deprecated-Date", "2027-12-31");
+
             return Ok(createdBook);
         }
 
