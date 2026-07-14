@@ -1,5 +1,5 @@
 ﻿using RestWithASPNET10.Data.Converter.Impl;
-using RestWithASPNET10.Data.DTO;
+using RestWithASPNET10.Data.DTO.V1;
 using RestWithASPNET10.Model;
 using RestWithASPNET10.Repositories;
 

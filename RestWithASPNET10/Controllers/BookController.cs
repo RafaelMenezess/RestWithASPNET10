@@ -5,7 +5,7 @@ using RestWithASPNET10.Services;
 namespace RestWithASPNET10.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v1")]
     public class BookController : ControllerBase
     {
         private readonly IBookServices _bookService;

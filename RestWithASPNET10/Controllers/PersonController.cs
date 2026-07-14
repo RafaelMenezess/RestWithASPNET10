@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestWithASPNET10.Data.DTO;
+using RestWithASPNET10.Data.DTO.V1;
 using RestWithASPNET10.Services;
 
 namespace RestWithASPNET10.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v1")]
     public class PersonController : ControllerBase
     {
         private readonly IPersonServices _personService;

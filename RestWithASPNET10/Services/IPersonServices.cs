@@ -1,4 +1,4 @@
-﻿using RestWithASPNET10.Data.DTO;
+﻿using RestWithASPNET10.Data.DTO.V1;
 
 namespace RestWithASPNET10.Services
 {
