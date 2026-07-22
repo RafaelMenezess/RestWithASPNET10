@@ -2,5 +2,6 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
+  <Project Path="RestWithASPNET10.Testes/RestWithASPNET10.Testes.csproj" Id="d193d459-0b0a-4c81-bef0-51f92a843632" />
   <Project Path="RestWithASPNET10/RestWithASPNET10.csproj" />
 </Solution>
