@@ -12,6 +12,7 @@ namespace RestWithASPNET10.Data.DTO.V2
         //[JsonPropertyName("last_name")]
         public string LastName { get; set; }
         public string Address { get; set; }
+        [JsonConverter(typeof(GenderSerializer))]
         public string Gender { get; set; }
         //[JsonPropertyName("birth_day")]
         [JsonConverter(typeof(DaterSerializer))]
