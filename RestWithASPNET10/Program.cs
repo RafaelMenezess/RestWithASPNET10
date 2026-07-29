@@ -12,6 +12,7 @@ builder.Services.AddControllers().AddContentNegotiationConfig();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenAPIConfig();
+builder.Services.AddSwaggerConfig();
 
 builder.Services.AddDataBaseConfiguration(builder.Configuration);
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
@@ -31,5 +32,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseSwaggerSpecification();
 
 app.Run();

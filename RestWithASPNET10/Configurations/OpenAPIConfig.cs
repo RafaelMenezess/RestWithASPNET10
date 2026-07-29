@@ -18,12 +18,12 @@ namespace RestWithASPNET10.Configurations
                 Contact = new OpenApiContact
                 {
                     Name = "Rafael",
-                    Url = new Uri("")
+                   //Url = new Uri("")
                 },
                 License = new OpenApiLicense
                 {
                     Name = "MIT",
-                    Url = new Uri("")
+                    //Url = new Uri("")
                 }
             });
             return services;
