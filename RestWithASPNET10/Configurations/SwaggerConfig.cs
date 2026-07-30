@@ -42,7 +42,7 @@ namespace RestWithASPNET10.Configurations
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                options.RoutePrefix = "swagger-ui";
+                options.RoutePrefix = "swagger";
                 options.DocumentTitle = AppName;
             });
             return app;

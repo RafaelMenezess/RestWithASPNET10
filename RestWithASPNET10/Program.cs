@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using RestWithASPNET10.Configurations;
 using RestWithASPNET10.Repositories;
 using RestWithASPNET10.Repositories.Impl;
@@ -13,6 +14,7 @@ builder.Services.AddControllers().AddContentNegotiationConfig();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenAPIConfig();
 builder.Services.AddSwaggerConfig();
+builder.Services.AddRouteConfig();
 
 builder.Services.AddDataBaseConfiguration(builder.Configuration);
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
