@@ -18,23 +18,28 @@ namespace RestWithASPNET10.Configurations
                 {
                     throw new ArgumentNullException("Connection string is null or empty");
                 }
-
                 try
                 {
-                    using var evolveConnection = new SqlConnection(connectionString);
-                    var evolve = new Evolve(evolveConnection, msg => Log.Information(msg))
-                    {
-                        Locations = new[] { "db/migrations", "db/dataset" },
-                        IsEraseDisabled = true
-                    };
-                    evolve.Migrate();
+                    ExecuteMigrations(connectionString);
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     Log.Error("Database migration failed: {Message}", ex.Message);
                 }
             }
             return services;
+        }
+
+        public static void ExecuteMigrations(string connectionString)
+        {
+            using var evolveConnection = new SqlConnection(connectionString);
+            var evolve = new Evolve(evolveConnection, msg => Log.Information(msg))
+            {
+                Locations = new[] { "db/migrations", "db/dataset" },
+                IsEraseDisabled = true
+            };
+            evolve.Migrate();
+
         }
     }
 }
