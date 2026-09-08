@@ -45,7 +45,7 @@ namespace RestWithASPNET10Erudio.Tests.IntegrationTests
                 .GetAsync("/swagger/index.html");
             // Assert
             response.EnsureSuccessStatusCode();
-            0
+            
             var content = await response.Content.ReadAsStringAsync();
             content.Should().NotBeNull();
             content.Should().Contain("<div id=\"swagger-ui\">");

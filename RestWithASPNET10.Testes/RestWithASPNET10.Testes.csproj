@@ -24,6 +24,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\RestWithASPNET10\db\migrations\**\*.sql"
+             Link ="db\migrations\%(RecursiveDir)%(Filename)%(Extension)"
+             CopyToOutputDirectory="Always" />
+    <Content Include="..\RestWithASPNET10\db\dataset\**\*.sql"
+             Link ="db\dataset\%(RecursiveDir)%(Filename)%(Extension)"
+             CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
