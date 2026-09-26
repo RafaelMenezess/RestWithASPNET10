@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿//using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNET10.Data.DTO.V1;
 using RestWithASPNET10.Services;
@@ -23,7 +23,7 @@ namespace RestWithASPNET10.Controllers.V1
         [ProducesResponseType(200, Type = typeof(List<PersonDTO>))]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [EnableCors("LocalPolicy")]
+        //[EnableCors("LocalPolicy")]
         public IActionResult Get()
         {
             _logger.LogInformation("Getting all persons");
@@ -50,7 +50,7 @@ namespace RestWithASPNET10.Controllers.V1
         [ProducesResponseType(200, Type = typeof(PersonDTO))]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [EnableCors("MultipleOriginPolicy")]
+        //[EnableCors("MultipleOriginPolicy")]
         public IActionResult Post([FromBody] PersonDTO person)
         {
             _logger.LogInformation("Creating new person");
