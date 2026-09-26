@@ -13,6 +13,7 @@ namespace RestWithASPNET10.Testes.IntegrationTests.Tools
         {
             Container = new MsSqlBuilder()
                 .WithPassword("Admin@123")
+                .WithPortBinding(0, 1433)
                 .Build();
         }
 
