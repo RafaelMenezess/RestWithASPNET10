@@ -4,12 +4,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace RestWithASPNET10.Testes.IntegrationTests.Tools
 {
-    public class CustonWebAppFactory<TProgram> :
+    public class CustomWebAppFactory<TProgram> :
         WebApplicationFactory<TProgram> where TProgram : class
     {
         private readonly string _connectionString;
 
-        public CustonWebAppFactory(string connectionString)
+        public CustomWebAppFactory(string connectionString)
         {
             _connectionString = connectionString;
         }

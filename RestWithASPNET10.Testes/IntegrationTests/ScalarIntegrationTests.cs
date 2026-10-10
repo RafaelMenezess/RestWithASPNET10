@@ -11,7 +11,7 @@ namespace RestWithASPNET10Erudio.Tests.IntegrationTests
 
         public ScalarIntegrationTests(SqlServerFixture sqlFixture)
         {
-            var factory = new CustonWebAppFactory<Program>(
+            var factory = new CustomWebAppFactory<Program>(
                 sqlFixture.ConnectionString);
 
             _httpClient = factory.CreateClient(
