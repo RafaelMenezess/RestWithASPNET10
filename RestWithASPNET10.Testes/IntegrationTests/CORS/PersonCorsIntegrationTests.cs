@@ -8,8 +8,8 @@ using System.Net.Http.Json;
 namespace RestWithASPNET10.Testes.IntegrationTests.CORS
 {
     [TestCaseOrderer(
-    "RestWithASPNET10.Tests.IntegrationTests.Tools.PriorityOrderer",
-    "RestWithASPNET10.Tests")]
+    "RestWithASPNET10.Testes.IntegrationTests.Tools.PriorityOrderer",
+    "RestWithASPNET10.Testes")]
     public class PersonCorsIntegrationTests : IClassFixture<SqlServerFixture>
     {
         private readonly HttpClient _httpClient;
@@ -89,6 +89,48 @@ namespace RestWithASPNET10.Testes.IntegrationTests.CORS
             var content = await response.Content
                 .ReadAsStringAsync();
             content.Should().Be("CORS origin not allowed.");
-        }       
+        }
+
+        [Fact(DisplayName = "03 - Get Person By ID With Allowed Origin")]
+        [TestPriority(3)]
+        public async Task FindPersonById_WithAllowedOrigin_ShouldReturnOk()
+        {
+            // Arrange
+            AddOriginHeader("http://localhost:3000");
+
+            // Act
+            var response = await _httpClient
+                .GetAsync($"api/person/v1/{_person.Id}");
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            var found = await response.Content
+                .ReadFromJsonAsync<PersonDTO>();
+
+            found.Should().NotBeNull();
+            found.Id.Should().Be(_person.Id);
+            found.FirstName.Should().Be("Richard");
+            found.LastName.Should().Be("Stallman");
+            found.Address.Should().Be("New York City - New York - USA");
+        }
+
+        [Fact(DisplayName = "04 - Get Person By ID With Disallowed Origin")]
+        [TestPriority(4)]
+        public async Task FindByIdPerson_WithDisallowedOrigin_ShouldReturnForbiden()
+        {
+            // Arrange
+            AddOriginHeader("https://www.google.com/");
+
+            // Act
+            var response = await _httpClient
+                .GetAsync($"api/person/v1/{_person.Id}");
+
+            // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
+            var content = await response.Content
+                .ReadAsStringAsync();
+            content.Should().Be("CORS origin not allowed.");
+        }
     }
 }
