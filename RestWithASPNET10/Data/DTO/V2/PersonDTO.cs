@@ -17,6 +17,7 @@ namespace RestWithASPNET10.Data.DTO.V2
         //[JsonPropertyName("birth_day")]
         [JsonConverter(typeof(DaterSerializer))]
         public DateTime? BirthDay { get; set; }
+        public bool Enable { get; set; }
     }
 }
 
