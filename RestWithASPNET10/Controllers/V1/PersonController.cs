@@ -91,5 +91,22 @@ namespace RestWithASPNET10.Controllers.V1
             _logger.LogDebug("Person with id: {id} deleted successfully", id);
             return NoContent();
         }
+
+        [HttpPatch("{id}")]
+        [ProducesResponseType(200, Type = typeof(PersonDTO))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        public IActionResult Patch(long id)
+        {
+            _logger.LogInformation("Patching person with id: {id}", id);
+            var disabledPerson = _personService.Disable(id);
+            if (disabledPerson == null)
+            {
+                _logger.LogError("Failed to disable person with id: {id}", id);
+                return NotFound();
+            }
+            _logger.LogDebug("Person with id: {id} disabled successfully", id);
+            return Ok(disabledPerson);
+        }
     }
 }

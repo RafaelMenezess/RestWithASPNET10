@@ -7,8 +7,8 @@ namespace RestWithASPNET10.Services.Implementations
 {
     public class PersonServices : IPersonServices
     {
-        private IRepository<Person> _repository;
-        public PersonServices(IRepository<Person> repository)
+        private IPersonRepository _repository;
+        public PersonServices(IPersonRepository repository)
         {
             _repository = repository;
         }
@@ -39,6 +39,12 @@ namespace RestWithASPNET10.Services.Implementations
         public void Delete(long id)
         {
             _repository.Delete(id);
+        }
+
+        public PersonDTO Disable(long id)
+        {
+            var entity = _repository.Disable(id);
+            return entity?.Adapt<PersonDTO>();
         }
     }
 }
