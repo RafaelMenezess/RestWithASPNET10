@@ -10,7 +10,7 @@ namespace RestWithASPNET10.Repositories.Impl
             var person = _context.Persons.Find(id);
             if (person != null)
             {
-                person.Enable = false;
+                person.Enabled = false;
                 _context.SaveChanges();
             }
             return person;
