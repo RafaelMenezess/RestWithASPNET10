@@ -22,4 +22,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Hyppermedia\Enricher\" />
+    <Folder Include="Hyppermedia\Filters\" />
+  </ItemGroup>
+
 </Project>
