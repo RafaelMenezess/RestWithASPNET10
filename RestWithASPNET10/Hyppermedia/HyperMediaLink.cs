@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace RestWithASPNET10.Hyppermedia
+namespace RestWithASPNET10.Hypermedia
 {
     public class HypermediaLink
     {
