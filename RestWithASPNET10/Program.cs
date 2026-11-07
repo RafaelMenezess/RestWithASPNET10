@@ -1,5 +1,5 @@
-using Microsoft.Extensions.Options;
 using RestWithASPNET10.Configurations;
+using RestWithASPNET10.Hyppermedia.Filters;
 using RestWithASPNET10.Repositories;
 using RestWithASPNET10.Repositories.Impl;
 using RestWithASPNET10.Services;
@@ -9,7 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddSerilogLogging();
 
-builder.Services.AddControllers().AddContentNegotiationConfig();
+builder.Services.AddControllers(opt =>
+    {
+        opt.Filters.Add<HypermediaFilter>();
+    }).AddContentNegotiationConfig();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenAPIConfig();
@@ -17,6 +20,7 @@ builder.Services.AddSwaggerConfig();
 builder.Services.AddRouteConfig();
 
 builder.Services.AddCorsConfiguration(builder.Configuration);
+builder.Services.AddHateoasConfiguration();
 
 builder.Services.AddDataBaseConfiguration(builder.Configuration);
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
@@ -39,6 +43,8 @@ app.UseRouting();
 app.UseCorsConfiguration(builder.Configuration);
 
 app.MapControllers();
+
+app.UseHateosRoutes();
 
 app.UseSwaggerSpecification();
 
