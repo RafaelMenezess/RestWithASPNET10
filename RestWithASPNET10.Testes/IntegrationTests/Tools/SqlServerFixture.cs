@@ -12,8 +12,7 @@ namespace RestWithASPNET10.Testes.IntegrationTests.Tools
         public SqlServerFixture()
         {
             Container = new MsSqlBuilder()
-                .WithPassword("Admin@123")
-                .WithPortBinding(0, 1433)
+                .WithPassword("Admin@123$")
                 .Build();
         }
 
