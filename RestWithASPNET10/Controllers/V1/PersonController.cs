@@ -30,6 +30,17 @@ namespace RestWithASPNET10.Controllers.V1
             return Ok(_personService.FindAll());
         }
 
+        [HttpGet("find-by-name")]
+        [ProducesResponseType(200, Type = typeof(List<PersonDTO>))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        //[EnableCors("LocalPolicy")]
+        public IActionResult GetByName([FromQuery] string firstName, [FromQuery] string lastName)
+        {
+            _logger.LogInformation("Getting persons by name");
+            return Ok(_personService.FindByName(firstName, lastName));
+        }
+
         [HttpGet("{id}")]
         [ProducesResponseType(200, Type = typeof(PersonDTO))]
         [ProducesResponseType(400)]

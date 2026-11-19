@@ -46,5 +46,10 @@ namespace RestWithASPNET10.Services.Implementations
             var entity = _repository.Disable(id);
             return entity?.Adapt<PersonDTO>();
         }
+
+        public List<PersonDTO> FindByName(string firstName, string lastName)
+        {
+            return _repository.FindByName(firstName, lastName).Adapt<List<PersonDTO>>();
+        }
     }
 }

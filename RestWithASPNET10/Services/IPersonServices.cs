@@ -10,5 +10,6 @@ namespace RestWithASPNET10.Services
         PersonDTO Update(PersonDTO person);
         void Delete(long id);
         PersonDTO Disable(long id);
+        List<PersonDTO> FindByName(string firstName, string lastName);
     }
 }
