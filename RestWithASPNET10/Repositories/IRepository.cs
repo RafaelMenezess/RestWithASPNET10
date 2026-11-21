@@ -1,5 +1,4 @@
-﻿using RestWithASPNET10.Model;
-using RestWithASPNET10.Model.Base;
+﻿using RestWithASPNET10.Model.Base;
 
 namespace RestWithASPNET10.Repositories
 {
@@ -11,5 +10,7 @@ namespace RestWithASPNET10.Repositories
         T Update(T item);
         void Delete(long id);
         bool Exists(long id);
+        List<T> FindWithPagedSearch(string query);
+        int GetCount(string query);
     }
 }

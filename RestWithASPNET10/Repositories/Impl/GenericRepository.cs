@@ -56,5 +56,22 @@ namespace RestWithASPNET10.Repositories.Impl
         {
             return _dataset.Any(p => p.Id.Equals(id));
         }
+
+        public List<T> FindWithPagedSearch(string query)
+        {
+            return _dataset.FromSqlRaw(query).ToList();
+        }
+
+        public int GetCount(string query)
+        {
+            using var connection = _context.Database.GetDbConnection();
+            connection.Open();
+
+            using var command = connection.CreateCommand();
+            command.CommandText = query;
+
+            var result = command.ExecuteScalar();
+            return Convert.ToInt32(result);
+        }
     }
 }
